@@ -1,0 +1,49 @@
+﻿@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery xsrf
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User Management /</span> Role Privilages</h4>
+
+<div class="row g-4">
+    <div class="col-xl-4 col-lg-6 col-md-6">
+        <div class="card h-100">
+            <div class="row h-100">
+                <div class="col-sm-5">
+                    <div class="d-flex align-items-end h-100 justify-content-center mt-sm-0 mt-3">
+                        <img src="~/lib/design/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png">
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="card-body text-sm-end text-center ps-sm-0">
+                        <button class="btn btn-primary mb-3 text-nowrap add-new-role" id="AddForm" data-has="">Add New</button>
+                        <p class="mb-0">Add Application Forms,if it does not exist</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header border-bottom">
+            </div>
+            <div class="card-datatable table-responsive">
+
+                <table class="datatables-users table border-top dataTable no-footer dtr-column" id="Formslist">
+                    <thead>
+                        <tr>
+                            <th>Identity #</th>
+                            <th>Name</th>
+                            <th>Level</th>
+                            <th>Level Name</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

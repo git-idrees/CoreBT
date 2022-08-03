@@ -1,0 +1,61 @@
+﻿@model CoreBT.Models.ProjectSetup
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery xsrf
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Project /</span> Setup</h4>
+
+<div class="card mb-4">
+    <form class="card-body" id="enableProjectForm">
+        <input type="hidden" class="required-entry" id="RequestVerificationToken" name="RequestVerificationToken" value="@xsrf.GetAndStoreTokens(Context).RequestToken" />
+        <h6>1. Project setup</h6>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label" for="multicol-username">Project Name *</label>
+                <input type="text" id="ProjectName" class="form-control required-entry" onkeypress="return fn.Characters(event,49);"  autofocus placeholder="Enter project name example Riyad Bank">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label" for="multicol-first-name">Project Code *</label>
+                <input type="text" id="ProjectCode"  class="form-control required-entry" placeholder="example RB" onkeypress="return fn.Length(event,10);">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label" for="multicol-country">Project City *</label>
+                <div class="position-relative">
+                    <select id="projectcity"  class="select2 form-select select2-hidden-accessible required-entry" aria-hidden="true">
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label" for="multicol-email">Project Manager Email *</label>
+                <div class="input-group input-group-merge">
+                    <input type="text" id="email" class="form-control required-entry"  placeholder="xyz@gmail.com">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-password-toggle">
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" disabled id="flexSwitchCheckChecked" checked="checked"> 
+                        <label class="form-check-label" for="flexSwitchCheckChecked">Send auto generated password on register email <i class="bx bx-left-arrow-circle"></i> </label>
+                    </div>
+                    <div class="input-group input-group-merge">
+                        <input type="password" id="password" disabled class="form-control" placeholder="Enter password" aria-describedby="multicol-password2">
+                        <span class="input-group-text cursor-pointer" id="multicol-password2"><i class="bx bx-hide"></i></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <hr class="my-4 mx-n4">
+        <div class="pt-4">
+            <button type="submit" class="btn btn-primary me-sm-3 me-1">Setup</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+<script>
+    Onload.Setup();
+    Events.Setup();
+</script>
+}

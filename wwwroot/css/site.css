@@ -1,0 +1,45 @@
+﻿html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.space{
+    width:10px;
+    height:auto;
+    display:inline-block;
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+#template-customizer {
+    display: none !important;
+}
+
+#toast-container {
+    
+}
+
+
+/*.btn .spinner-border {
+    display: none;
+}*/
+
+.showthis {
+    display: block !important;
+}
+
+.hidethis {
+    display: none !important;
+}
+

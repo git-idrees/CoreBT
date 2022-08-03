@@ -1,0 +1,114 @@
+﻿@model CoreBT.Models.AccountL2
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery xsrf
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Master Data /</span> Account Level 2</h4>
+
+
+<div class="row g-4">
+    <div class="col-xl-4 col-lg-8 col-md-8">
+        <div class="card h-100">
+            <div class="row h-100">
+                <div class="col-sm-3">
+                    <div class="d-flex align-items-end h-100 justify-content-center mt-sm-0 mt-3">
+                        @*<img src="~/lib/Design/img/illustrations/laptop-light.png" class="img-fluid" alt="Image" width="120" data-app-light-img="/lib/Design/img/illustrations/laptop-light.png" data-app-dark-img="lib/Design/img/illustrations/laptop-light.png">*@
+                        <img src="~/lib/Design/img/illustrations/laptop-light.png" class="img-fluid" alt="Image" width="120">
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="card-body text-sm-end text-center ps-sm-0">
+                        <button class="btn btn-primary mb-3 text-nowrap add-new-role" id="AddAccountL2">Add New</button>
+                        <p class="mb-0">Add Account for level 2,if it does not exist</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header border-bottom">
+                @*<div class="sk-wave sk-primary">
+                    <div class="sk-wave-rect"></div>
+                    <div class="sk-wave-rect"></div>
+                    <div class="sk-wave-rect"></div>
+                    <div class="sk-wave-rect"></div>
+                    <div class="sk-wave-rect"></div>
+                </div>*@
+            </div>
+            <div class="card-datatable table-responsive">
+                <table class="datatables-users table border-top dataTable no-footer dtr-column" id="AccountL2list">
+                    <thead>
+                        <tr>
+                            <th>Identity #</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="ModalAccountL2" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-simple modal-edit-user modal-dialog-centered">
+        <div class="modal-content p-3 p-md-5">
+            <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="text-center mb-4">
+                    <h3 class="mb-5">Add or Edit Account Level</h3>
+                </div>
+                <form id="enableAccountL2Form" class="row g-3" novalidate>
+                    <input class="required-entry" data-id="ID" id="ID" type="hidden" value="0" />
+                    <input type="hidden" class="required-entry" id="RequestVerificationToken" name="RequestVerificationToken" value="@xsrf.GetAndStoreTokens(Context).RequestToken" />
+                    <div class="col-12 col-md-6 fv-plugins-icon-container">
+                        <label class="form-label" asp-for="AccountName"></label>
+                        <input type="text" data-id="AccountName" asp-for="AccountName" class="form-control required-entry" placeholder="example : SA41" onkeypress="return fn.Characters(event, 49)" />
+                    </div>
+                    <hr />
+                    <div class="col-12">
+                        Status
+                        <label class="switch switch-primary switch-lg">
+                            <input type="checkbox" id="IsActive" class="switch-input required-entry" checked="">
+                            <span class="switch-toggle-slider">
+                                <span class="switch-on">
+                                    <i class="bx bx-check"></i>
+                                </span>
+                                <span class="switch-off">
+                                    <i class="bx bx-x"></i>
+                                </span>
+                            </span>
+                            <span class="switch-label">Active</span>
+                        </label>
+                    </div>
+                    <hr />
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">
+                            <span class="spinner-border hidethis" role="status" aria-hidden="true" id="spinner"></span>
+                            Save Changes
+                        </button>
+
+                        <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="modal" aria-label="Close" data-form="enableAccountL2Form">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script>
+        Events.AccountL2(@User.FindFirst("ProjectID").Value);
+        Tables.AccountL2(@User.FindFirst("ProjectID").Value);
+    </script>
+}

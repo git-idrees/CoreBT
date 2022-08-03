@@ -1,0 +1,156 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery xsrf
+
+
+
+<div class="row g-4 mb-4">
+    <div class="col-sm-6 col-xl-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between">
+                    <div class="content-left">
+                        <span>Projects</span>
+                        <div class="d-flex align-items-end mt-2">
+                            <h4 class="mb-0 me-2">21</h4>
+                            <small class="text-success">(+29%)</small>
+                        </div>
+                        <small>Total Projects</small>
+                    </div>
+                    <span class="badge bg-label-primary rounded p-2">
+                        <i class="bx bx-user bx-sm"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between">
+                    <div class="content-left">
+                        <span>Total Users</span>
+                        <div class="d-flex align-items-end mt-2">
+                            <h4 class="mb-0 me-2">230</h4>
+                            <small class="text-success">(+18%)</small>
+                        </div>
+                        <small>Last week analytics </small>
+                    </div>
+                    <span class="badge bg-label-danger rounded p-2">
+                        <i class="bx bx-user-plus bx-sm"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between">
+                    <div class="content-left">
+                        <span>Active Users</span>
+                        <div class="d-flex align-items-end mt-2">
+                            <h4 class="mb-0 me-2">212</h4>
+                            <small class="text-danger">(-14%)</small>
+                        </div>
+                        <small>Last week analytics</small>
+                    </div>
+                    <span class="badge bg-label-success rounded p-2">
+                        <i class="bx bx-group bx-sm"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    @* <div class="col-sm-6 col-xl-3">
+        <div class="card">
+        <div class="card-body">
+        <div class="d-flex align-items-start justify-content-between">
+        <div class="content-left">
+        <span>Pending Users</span>
+        <div class="d-flex align-items-end mt-2">
+        <h4 class="mb-0 me-2">237</h4>
+        <small class="text-success">(+42%)</small>
+        </div>
+        <small>Last week analytics</small>
+        </div>
+        <span class="badge bg-label-warning rounded p-2">
+        <i class="bx bx-user-voice bx-sm"></i>
+        </span>
+        </div>
+        </div>
+        </div>
+        </div>*@
+</div>
+
+<div class="card">
+    <div class="card-header border-bottom">
+        <h5 class="card-title">Search Filter</h5>
+        <div class="d-flex justify-content-between align-items-center row py-3 gap-3 gap-md-0">
+            <div class="col-md-4 user_role"></div>
+            <div class="col-md-4 user_plan"></div>
+            <div class="col-md-4 user_status"></div>
+        </div>
+    </div>
+    <div class="card-datatable table-responsive">
+        <table class="datatables-users table border-top" id="projectlist">
+            <thead>
+                <tr>
+                    <th>Project Name</th>
+                    <th>City</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalProject" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-simple modal-edit-user modal-dialog-centered">
+        <div class="modal-content p-3 p-md-5">
+            <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="text-center mb-4">
+                    <h3 class="mb-5">Edit Project</h3>
+                </div>
+                <form class="row g-3" novalidate id="enableProjectForm">
+                    <input class="required-entry" data-id="CityId" id="ID" type="hidden" value="0" />
+                    <input type="hidden" class="required-entry" id="RequestVerificationToken" name="RequestVerificationToken" value="@xsrf.GetAndStoreTokens(Context).RequestToken" />
+                    <h6>1. Project setup</h6>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label" for="multicol-username">Project Name *</label>
+                            <input type="text" id="ProjectName" class="form-control required-entry" onkeypress="return fn.Characters(event,49);" autofocus placeholder="Enter project name example Riyad Bank">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="multicol-first-name">Project Code *</label>
+                            <input type="text" id="ProjectCode" class="form-control required-entry" placeholder="example RB" onkeypress="return fn.Length(event,10);">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="multicol-country">Project City *</label>
+                            <div class="position-relative">
+                                <select id="projectcity" class="select2 form-select select2-hidden-accessible required-entry" aria-hidden="true">
+                                </select>
+                            </div>
+                        </div>                        
+                    </div>
+                    <hr class="my-4 mx-n4">
+                    <div class="pt-4">
+                        <button type="submit" class="btn btn-primary me-sm-3 me-1">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+<script>
+    Onload.projectList();
+    Tables.Project();
+</script>
+}

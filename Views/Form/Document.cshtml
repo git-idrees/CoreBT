@@ -1,0 +1,184 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Form /</span> Document Fields</h4>
+
+
+<div class="row">
+    <div class="col-lg-9 order-0">
+        <div class="card">
+            <div class="card-body">
+                <h6>Please set the indexing fields and all validations</h6>
+                <div class="table-responsive">
+                    <table class="table table-striped table-borderless border-bottom">
+                        <thead>
+                            <tr>
+                                <th class="text-nowrap">Default Field</th>
+                                <th class="text-nowrap text-center">✉️ Field Name</th>
+                                <th class="text-nowrap text-center">🖥 Data Type</th>
+                                <th class="text-nowrap text-center">👩🏻‍💻 Length</th>
+                                <th class="text-nowrap text-center">👩🏻‍💻 Include</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-nowrap">UDF 1</td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-text-input" type="text" id="udf1rename">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <select id="sendNotification" class="form-select" name="sendNotification">
+                                            <option selected="">Characters</option>
+                                            <option value="Numbers">Numbers</option>
+                                            <option value="Decimal">Decimal</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-text-input" type="number" id="udf1length">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-check-input" type="checkbox" id="primarykey" checked="">
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-nowrap">UDF 2</td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-text-input" type="text" id="udf2rename">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <select id="sendNotification" class="form-select" name="sendNotification">
+                                            <option selected="">Characters</option>
+                                            <option value="Numbers">Numbers</option>
+                                            <option value="Decimal">Decimal</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-text-input" type="number" id="udf2length">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-check-input" type="checkbox" id="primarykey">
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="text-nowrap">UDF 3</td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-text-input" type="text" id="udf3rename">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <select id="sendNotification" class="form-select" name="sendNotification">
+                                            <option selected="" disabled>Characters</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-text-input" type="number" id="udf3length">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-check-input" type="checkbox" id="primarykey">
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="text-nowrap">UDF 4</td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-text-input" type="text" id="udf4rename">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <select id="sendNotification" class="form-select" name="sendNotification">
+                                            <option selected="">DateTime</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-text-input" type="number" id="udf4length" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-check-input" type="checkbox" id="primarykey">
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-nowrap">UDF 5</td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-text-input" type="text" id="udf5rename">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <select id="sendNotification" class="form-select" name="sendNotification">
+                                            <option selected="" disabled>DateTime</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-text-input" type="number" id="udf5length" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input class="form-check-input" type="checkbox" id="primarykey">
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <form action="javascript:void(0);">
+                    <div class="row">
+                        <div class="col-sm-6">
+                        </div>
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                            <button type="reset" class="btn btn-label-secondary">Discard</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3  order-0">
+        <div class="card">
+            <div class="card-body">
+                <h6>Below are the functions</h6>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,138 @@
+﻿@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery xsrf
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User Management /</span> Application Users</h4>
+
+
+<div class="row g-4">
+    <div class="col-xl-4 col-lg-6 col-md-6">
+        <div class="card h-100">
+            <div class="row h-100">
+                <div class="col-sm-5">
+                    <div class="d-flex align-items-end h-100 justify-content-center mt-sm-0 mt-3">
+                        <img src="~/lib/Design/img/illustrations/laptop-light.png" class="img-fluid" alt="Image" width="120">
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="card-body text-sm-end text-center ps-sm-0">
+                        <button class="btn btn-primary mb-3 text-nowrap add-new-role" id="AddUser">Add New User</button>
+                        <p class="mb-0">Add User,if it does not exist</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header border-bottom">
+                Users List
+            </div>
+            <div class="card-datatable table-responsive">
+                <table class="datatables-users table border-top dataTable no-footer dtr-column" id="Userlist">
+                    <thead>
+                        <tr>
+                            <th>Identity #</th>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="ModalUser" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-simple modal-edit-user modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="text-center mb-4">
+                    <h3 class="mb-5">Add or Edit Users</h3>
+                </div>
+                <form id="enableUserForm" novalidate>
+
+                    <div class="row">
+                        <input  data-id="Id" id="ID" type="hidden" value="" />
+                        <input type="hidden" class="required-entry" id="RequestVerificationToken" name="RequestVerificationToken" value="@xsrf.GetAndStoreTokens(Context).RequestToken" />
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Select Role</label>
+                                <select id="ddRole" class="form-select">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label"> Employee ID *</label>
+                                <input type="text" data-id="EmpID" id="EmpID" class="form-control required-entry" placeholder="example : 601192" onkeypress="return fn.Length(event, 20)" />
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb-12">
+                                <label class="form-label"> Full Name *</label>
+                                <input type="text" data-id="Name" id="Name" class="form-control required-entry" placeholder="Enter Name" onkeypress="return fn.Characters(event, 49)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label"> Email / Username  </label>
+                                <input type="text" data-id="Email" id="Email" class="form-control required-entry" placeholder="enter email or username" onkeypress="return fn.Length(event, 49)" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label"> Password *</label>
+                                <input type="password" data-id="Password" id="Password" class="form-control required-entry" placeholder="Safe to enter password" onkeypress="return fn.Length(event, 20)" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-12">
+                        Status
+                        <label class="switch switch-primary switch-lg">
+                            <input type="checkbox" id="IsActive" class="switch-input required-entry" checked="">
+                            <span class="switch-toggle-slider">
+                                <span class="switch-on">
+                                    <i class="bx bx-check"></i>
+                                </span>
+                                <span class="switch-off">
+                                    <i class="bx bx-x"></i>
+                                </span>
+                            </span>
+                            <span class="switch-label">Lock</span>
+                        </label>
+                    </div>
+                    <hr />
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">
+                            <span class="spinner-border hidethis" role="status" aria-hidden="true" id="spinner"></span>
+                            Save Changes
+                        </button>
+                        <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script>
+        Events.User(@User.FindFirst("ProjectID").Value);
+        Tables.User(@User.FindFirst("ProjectID").Value);
+    </script>
+}

@@ -1,0 +1,112 @@
+﻿<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class="app-brand demo ">
+        <a href="index.html" class="app-brand-link">
+            <span class="app-brand-logo demo">
+
+            </span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">dms-world</span>
+        </a>
+        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+        </a>
+    </div>
+    <div class="menu-inner-shadow"></div>
+    <ul class="menu-inner py-1">
+        <!-- Dashboards -->
+        <li class="menu-item active">
+            <a href="/Admin/Index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div>Dashboards</div>
+            </a>
+        </li>
+        <!-- Master Data -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Master Data</span>
+        </li>
+
+        <li class="menu-item">
+            <a href="/MasterData/LevelTwo" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
+                <div>Account Level 2</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="/MasterData/LevelThree" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
+                <div>Account Level 3</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="/MasterData/DocumentType" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
+                <div>Department / Category</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="/MasterData/Lookup" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
+                <div>Lookup Data</div>
+            </a>
+        </li>
+
+        <!-- Indexing -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Indexing</span>
+        </li>
+        @*<li class="menu-item" id="form_li" data-id=@User.FindFirst("ProjectID").Value>
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-carousel"></i>
+        <div>Froms </div>
+        </a>
+        <ul class="menu-sub">
+        <li class="menu-item" id="form_a">
+        s
+        </li>
+        </ul>
+        </li>*@
+
+        <li class="menu-item">
+            <a href="/Form/List" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-carousel"></i>
+                <div>Forms </div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="/Form/Index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-carousel"></i>
+                <div>Forms Setup </div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="/Project/List" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-chart"></i>
+                <div>Reports </div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="#" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div>User Management </div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="/Policy/Roles" class="menu-link">
+                        <div>Roles</div>
+                    </a>
+                </li>                
+                <li class="menu-item">
+                    <a href="/Policy/ApplicationUsers" class="menu-link">
+                        <div>Application Users</div>
+                    </a>
+                </li>
+            </ul>
+        </li>    
+
+    </ul>
+</aside>   

@@ -1,0 +1,12 @@
+﻿@model string
+
+@if (!String.IsNullOrEmpty(Model))
+{
+    var statusMessageClass = Model.StartsWith("Error") ? "danger" : "primary";
+    <div class="alert alert-@statusMessageClass alert-dismissible" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        @Model
+    </div>
+
+    <a id="forgot-password" asp-page="./login"> <i class="menu-icon tf-icons bx bx-log-in-circle"></i> Click here to login </a>
+}

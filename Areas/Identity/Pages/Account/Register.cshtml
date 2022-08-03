@@ -1,0 +1,49 @@
+﻿@page
+@model RegisterModel
+@{
+    Layout = "~/Views/Shared/_Layoutless.cshtml";
+}
+
+<!-- Logo -->
+<div class="app-brand justify-content-center">
+    <a href="#" class="app-brand-link gap-2">
+        <span class="app-brand-logo demo">
+        </span>
+        <span class="app-brand-text demo text-body fw-bolder">Dms-World</span>
+    </a>
+</div>
+<p class="mb-4">Make your app management easy and fun!</p>
+<form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="mb-3"> 
+    <hr />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+         <label asp-for="Input.Email"></label>
+        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />       
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.Password"></label>
+        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />        
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.ConfirmPassword"></label>
+        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />        
+        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary post">Register</button>
+    </div>
+</form>
+<!-- /Logo -->
+
+<p class="text-center">
+    <span>Already have an account?</span>
+    <a asp-page="./ForgotPassword">
+        <span>Sign in instead</span>
+    </a>
+</p>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
